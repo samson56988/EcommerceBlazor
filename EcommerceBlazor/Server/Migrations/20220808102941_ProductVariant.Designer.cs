@@ -3,6 +3,7 @@ using EcommerceBlazor.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceBlazor.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220808102941_ProductVariant")]
+    partial class ProductVariant
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,9 +79,6 @@ namespace EcommerceBlazor.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Featured")
-                        .HasColumnType("bit");
-
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -100,7 +99,6 @@ namespace EcommerceBlazor.Server.Migrations
                             Id = 1,
                             CategoryId = 1,
                             Description = "The Hitchhiker's Guide to the Galaxy [Note 1] (sometimes you have to travel the stars)",
-                            Featured = true,
                             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/b/bd/H2G2_UK_front_cover.jpg",
                             Title = "The Hitchhiker's Guide to the Galaxy"
                         },
@@ -109,7 +107,6 @@ namespace EcommerceBlazor.Server.Migrations
                             Id = 2,
                             CategoryId = 1,
                             Description = "Ready Player One is a 2011 science fiction novel, and the debut novel for the best player in America",
-                            Featured = true,
                             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/a/a4/Ready_Player_One_cover.jpg",
                             Title = "Ready Player One"
                         },
@@ -118,7 +115,6 @@ namespace EcommerceBlazor.Server.Migrations
                             Id = 3,
                             CategoryId = 1,
                             Description = "Ninteen Eighty-Four (also stylised as 1984) is a native store of USA background",
-                            Featured = false,
                             ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/c/c3/1984first.jpg",
                             Title = "Ninteen Eighty-Four"
                         });
