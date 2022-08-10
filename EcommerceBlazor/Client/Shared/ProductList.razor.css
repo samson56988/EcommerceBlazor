@@ -28,6 +28,11 @@
     color:green;
 }
 
+.page-selection{
+    margin-right:15px;
+    margin-bottom:30px;
+}
+
 @media(max-with:1023.98px){
     .media{
         flex-direction:column;

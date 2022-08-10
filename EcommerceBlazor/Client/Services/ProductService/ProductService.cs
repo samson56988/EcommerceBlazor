@@ -37,14 +37,27 @@
             if (result != null && result.Data != null)
                 Products = result.Data;
 
+            CurrentPage = 1;
+            PageCount = 0;
+
+            if (Products.Count == 0)
+                Message = "No products found";
+
+
             ProductsChanged.Invoke();
         }
 
-        public async Task SearchProducts(string searchTxt)
+        public async Task SearchProducts(string searchTxt, int page)
         {
-            var result =  await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>($"api/product/search/{searchTxt}");
+            LastSearchText = searchTxt;
+            var result =  await _httpClient.GetFromJsonAsync<ServiceResponse<ProductSearchResult>>($"api/product/search/{searchTxt}/{page}");
             if (result != null && result.Data != null)
-                Products = result.Data;
+            {
+                Products = result.Data.Products;
+                CurrentPage = result.Data.CurrentPage;
+                PageCount = result.Data.Pages;
+            }
+              
             if (Products.Count == 0) Message = "No products found.";
             ProductsChanged?.Invoke();
         }
@@ -55,7 +68,11 @@
             return result.Data;
         }
 
-        public List<Product> Products { get; set; } = new List<Product>();
        
+
+        public List<Product> Products { get; set; } = new List<Product>();
+        public int CurrentPage { get; set; } = 1;
+        public int PageCount { get; set; } = 0;
+        public string LastSearchText { get; set; } = string.Empty;
     }
 }
