@@ -141,5 +141,7 @@ namespace EcommerceBlazor.Server.Services.AuthService
 
             return new ServiceResponse<bool> { Data = true, Message = "Password has been changed" };
         }
+
+     
     }
 }

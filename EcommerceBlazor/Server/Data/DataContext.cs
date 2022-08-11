@@ -14,6 +14,9 @@ namespace EcommerceBlazor.Server.Data
             modelBuilder.Entity<ProductVariant>()
                 .HasKey(p => new { p.ProductId, p.ProductTypeId });
 
+            modelBuilder.Entity<CartItem>()
+               .HasKey(ci => new {ci.UserId, ci.ProductId, ci.ProductTypeID });
+
 
             modelBuilder.Entity<ProductType>().HasData(
                   new ProductType { Id = 1, Name = "Default" },
@@ -256,6 +259,8 @@ namespace EcommerceBlazor.Server.Data
         public DbSet<ProductVariant> ProductVariant { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<CartItem> CartItems { get; set; }
 
     }
 

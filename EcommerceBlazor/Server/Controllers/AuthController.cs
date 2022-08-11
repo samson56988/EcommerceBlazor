@@ -6,6 +6,7 @@ using System.Security.Claims;
 
 namespace EcommerceBlazor.Server.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -49,9 +50,11 @@ namespace EcommerceBlazor.Server.Controllers
 
         }
 
-        [HttpPost("change-password"),Authorize]
+        [Authorize]
+        [HttpPost("change-password")]
         public async Task<ActionResult<ServiceResponse<bool>>> ChangePassword([FromBody] string newPassword)
         {
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var response = await _authService.ChangePassword(int.Parse(userId), newPassword);
 
