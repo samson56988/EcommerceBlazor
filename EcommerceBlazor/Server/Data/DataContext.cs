@@ -17,6 +17,9 @@ namespace EcommerceBlazor.Server.Data
             modelBuilder.Entity<CartItem>()
                .HasKey(ci => new {ci.UserId, ci.ProductId, ci.ProductTypeID });
 
+            modelBuilder.Entity<OrderItem>()
+               .HasKey(oi => new { oi.OrderId, oi.ProductId,oi.ProductTypeId});
+
 
             modelBuilder.Entity<ProductType>().HasData(
                   new ProductType { Id = 1, Name = "Default" },
@@ -261,6 +264,10 @@ namespace EcommerceBlazor.Server.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<CartItem> CartItems { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
 
     }
 

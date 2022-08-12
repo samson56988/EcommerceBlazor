@@ -10,6 +10,8 @@
 
         Task<ServiceResponse<bool>> ChangePassword(int UserId, string Password);
 
+        int GetUserID();
+
         
     }
 }
