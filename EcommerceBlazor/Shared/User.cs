@@ -16,5 +16,9 @@ namespace EcommerceBlazor.Shared
 
         public DateTime Created { get; set;}   = DateTime.Now;
 
+        public Address Addresss { get; set; }
+
+        public string Role { get; set; } = "Customer";
+
     }
 }
