@@ -271,6 +271,8 @@ namespace EcommerceBlazor.Server.Data
 
         public DbSet<Address> Addresses { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
     }
 
 

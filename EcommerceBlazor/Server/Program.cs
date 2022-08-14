@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using EcommerceBlazor.Server.Services.OrderService;
 using EcommerceBlazor.Server.Services.AddressService;
+using EcommerceBlazor.Server.Services.ProuctTypeService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,7 @@ builder.Services.AddScoped<ICartService,CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
